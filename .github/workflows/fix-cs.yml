@@ -12,7 +12,7 @@ jobs:
             - uses: peter-evans/create-pull-request@v2
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}                    
-                  commit-message: Update test file with current time
+                  commit-message: Update test file as of ${{ github.ref }}
                   title: Update time in ${{ github.ref }}
                   branch: update-time-bot/${{ github.ref }}
                   assignees: ${{ github.actor }}
