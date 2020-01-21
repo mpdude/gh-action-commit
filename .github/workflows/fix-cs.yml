@@ -7,18 +7,17 @@ jobs:
         runs-on: ubuntu-18.04
         steps:
             - uses: actions/checkout@v2
-            - run: date >> test
-            - run: git diff
+            - uses: docker://oskarstark/php-cs-fixer-ga:2.15.3
             - uses: peter-evans/create-pull-request@v2
               id: cpr
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}                    
-                  commit-message: Update test file as of ${{ github.sha }}
-                  title: Update time in ${{ github.ref }}
-                  branch: update-time-bot/${{ github.ref }}
+                  commit-message: Apply php-cs-fixer changes as of ${{ github.sha }}
+                  title: Fix coding standards in ${{ github.ref }}
+                  branch: php-cs-fixer/${{ github.ref }}
                   assignees: ${{ github.actor }}
                   body: |
-                    Some changes should be made in the ${{ github.ref }} branch.
+                    Please apply these changes on the ${{ github.ref }} branch to fix coding standard violations.
 
             - uses: unsplash/comment-on-pr@v1.2.0
               env:
@@ -26,7 +25,7 @@ jobs:
               if: steps.cpr.outputs.pr_number
               with:
                   msg: |
-                    Check out #${{ steps.cpr.outputs.pr_number }}
+                    @${{ github.actor }} please apply the coding standard fixes from #${{ steps.cpr.outputs.pr_number }}
                     
                   
                 
