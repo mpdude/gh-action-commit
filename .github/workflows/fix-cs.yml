@@ -22,6 +22,8 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
-                  msg: "Check out this message!"
+                  msg: |
+                    Check out #${{ env.PULL_REQUEST_NUMBER }}
+                    
                   
                 
