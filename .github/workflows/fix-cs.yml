@@ -23,6 +23,7 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               if: steps.cpr.outputs.pr_number
+              continue-on-error: true # Will fail if not on PR
               with:
                   msg: |
                     @${{ github.actor }} please apply the coding standard fixes from #${{ steps.cpr.outputs.pr_number }}
