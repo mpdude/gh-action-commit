@@ -8,6 +8,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: date >> test
+            - run: git diff
             - uses: peter-evans/create-pull-request@v2
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}                    
