@@ -17,6 +17,8 @@ jobs:
                   title: Update time in ${{ github.ref }}
                   branch: update-time-bot/${{ github.ref }}
                   assignees: ${{ github.actor }}
+                  body: |
+                    Some changes should be made in the ${{ github.ref }} branch.
 
             - uses: unsplash/comment-on-pr@v1.2.0
               env:
