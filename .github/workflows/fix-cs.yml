@@ -10,6 +10,7 @@ jobs:
             - run: date >> test
             - run: git diff
             - uses: peter-evans/create-pull-request@v2
+              id: cpr
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}                    
                   commit-message: Update test file as of ${{ github.sha }}
@@ -20,10 +21,10 @@ jobs:
             - uses: unsplash/comment-on-pr@v1.2.0
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              if: ${{ env.PULL_REQUEST_NUMBER }}
+              if: ${{ steps.cpr.outputs.pr_number }}
               with:
                   msg: |
-                    Check out #${{ env.PULL_REQUEST_NUMBER }}
+                    Check out #${{ steps.cpr.outputs.pr_number }}
                     
                   
                 
