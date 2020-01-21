@@ -15,4 +15,5 @@ jobs:
                   commit-message: Update test file with current time
                   title: Update time in ${{ github.ref }}
                   branch: update-time-bot/${{ github.ref }}
+                  assignees: ${{ github.actor }}
                   
