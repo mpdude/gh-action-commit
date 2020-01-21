@@ -1,0 +1,16 @@
+on: [push]
+name: Test commit
+
+jobs:
+    test-it:
+        name: Test PR
+        runs-on: ubuntu-18.04
+        steps:
+            - uses: actions/checkout@v2
+            - run: date >> test
+            - uses: peter-evans/create-pull-request@v2
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}                    
+                  commit-message: Update test file with current time
+                  title: Update time
+                  
