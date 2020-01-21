@@ -14,4 +14,5 @@ jobs:
                   token: ${{ secrets.GITHUB_TOKEN }}                    
                   commit-message: Update test file with current time
                   title: Update time
+                  branch: update-time-bot/${{ github.ref }}
                   
