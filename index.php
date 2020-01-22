@@ -1,3 +1,3 @@
 <?php
 
-return ['something to change'];
+return array('something to change');
